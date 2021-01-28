@@ -117,8 +117,7 @@ class BrotherQLBackendPyUSB(BrotherQLBackendGeneric):
         self.read_dev  = ep_in
 
     def _raw_read(self, length):
-        # pyusb Device.read() operations return array() type - let's convert it to bytes()
-        return bytes(self.read_dev.read(length))
+        return self.read_dev.read(length)
 
     def _read(self, length=32):
         if self.strategy == 'try_twice':
